@@ -13,6 +13,9 @@ class discovery:
     isOpen=True;
     client=socket(AF_INET,SOCK_DGRAM)
     def broadcast(self):
-        logger.info("find me")
-        data="find me".encode()
-        self.client.sendto(data,('',50000))
+        if isOpen:
+            logger.info("find me")
+            data="find me".encode()
+            self.client.sendto(data,('',50000))
+        else:
+            pass
