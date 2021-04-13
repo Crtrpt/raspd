@@ -8,6 +8,12 @@ git clone git@github.com:Crtrpt/raspd.git
 cd raspd
 pip3 install -r requirements.txt
 ```
+
+# run test 
+```
+python3 -m unittest discover -s ./tests/ -p "*test.py"
+```
+
 ## application layer protocol
 
 report  device capability
@@ -15,7 +21,7 @@ report  device capability
 {
   "action": "report",
   "payload": {
-      cpu_usage_rate: 0.2
+      cpu_usage_rate: 0.2,
       memery_usage_rate: 0.8
   }
 }
@@ -26,7 +32,7 @@ report  capability data
 {
   "action": "report",
   "payload": {
-      cpu_usage_rate: 0.2
+      cpu_usage_rate: 0.2,
       cpu_usage_rate: 0.8
   }
 }
