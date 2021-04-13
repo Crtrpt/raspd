@@ -52,3 +52,11 @@ set capability config
   ]
 }
 ```
+
+remote exec code
+```
+{
+  "action": "exec",
+  "payload": "exec some code from remote"
+}
+```
