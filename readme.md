@@ -8,3 +8,47 @@ git clone git@github.com:Crtrpt/raspd.git
 cd raspd
 pip3 install -r requirements.txt
 ```
+## application layer protocol
+
+report  device capability
+```
+{
+  "action": "report",
+  "payload": {
+      cpu_usage_rate: 0.2
+      memery_usage_rate: 0.8
+  }
+}
+```
+
+report  capability data
+```
+{
+  "action": "report",
+  "payload": {
+      cpu_usage_rate: 0.2
+      cpu_usage_rate: 0.8
+  }
+}
+```
+
+read   capability data
+```
+{
+  "action": "read",
+  "payload": [
+      "cpu","cpu_temp"
+  ]
+}
+```
+
+set capability config
+```
+{
+  "action": "config",
+  "payload": [
+      "key":"value",
+      "key2":"value2"
+  ]
+}
+```
