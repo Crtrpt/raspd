@@ -1,4 +1,4 @@
-Raspberry 客户端实现
+Raspberry device client
 
 # install
 ```

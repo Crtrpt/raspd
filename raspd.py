@@ -8,6 +8,7 @@ import uuid;
 import paho.mqtt.client as mqtt;
 import web;
 import config as cfg;
+import find as finder;
 
 logging.basicConfig(level = logging.INFO,format = '%(asctime)s - %(name)s  -%(process)s -%(thread)s - %(levelname)s - %(message)s ')
 logger = logging.getLogger(__name__)
@@ -52,17 +53,18 @@ class raspd:
     
 
 if __name__ == '__main__':
+    finder=finder.discovery();
     pid = os.fork();
     if pid :
         pid1=os.fork();
         if pid1 :
             logger.info("父进程进入睡眠状态"+str(pid))
             while True :   
-                time.sleep(1000)
+                finder.broadcast();
+                time.sleep(15)
         else:
             pass
             # web.app.run(host="0.0.0.0", debug=True,threaded=True)
-
     else:
         device = raspd();
         device.run();
