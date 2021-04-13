@@ -1,0 +1,3 @@
+def capability = {
+    "power":"",
+} 
