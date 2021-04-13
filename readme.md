@@ -1,5 +1,8 @@
 Raspberry device client
+---
+[![Python Test](https://github.com/Crtrpt/raspd/actions/workflows/python-test.yml/badge.svg)](https://github.com/Crtrpt/raspd/actions/workflows/python-test.yml/badge.svg)
 
+---
 # install
 ```
 sudo apt install python3
@@ -8,7 +11,6 @@ git clone git@github.com:Crtrpt/raspd.git
 cd raspd
 pip3 install -r requirements.txt
 ```
-
 # run test 
 ```
 python3 -m unittest discover -s ./tests/ -p "*test.py"
