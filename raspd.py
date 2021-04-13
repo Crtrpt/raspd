@@ -9,6 +9,7 @@ import paho.mqtt.client as mqtt;
 import web;
 import config as cfg;
 import find as finder;
+import json
 
 logging.basicConfig(level = logging.INFO,format = '%(asctime)s - %(name)s  -%(process)s -%(thread)s - %(levelname)s - %(message)s ')
 logger = logging.getLogger(__name__)
@@ -20,7 +21,10 @@ class raspd:
     topic= ""
     
     def signup(self):
-        logger.info("注册设备")
+        topic=self.topic+"/signup"
+        payload=json.dumps(cfg.capability)
+        logger.info("注册设备 %s %s",topic,payload)
+        self.client.publish(topic,payload);
 
     def on_connect(self,client, userdata, flags, rc):
         logger.info("连接成功")
@@ -28,8 +32,9 @@ class raspd:
         logger.info("订阅 "+self.topic)
         self.client.subscribe(self.topic, qos=1)
 
+
     def on_message(self,client, userdata, msg):
-        logger.info("收到消息")
+        logger.info("收到消息 %s",msg.payload.decode())
         
     def initMqtt(self):        
         address = hex(uuid.getnode())[2:];
@@ -61,7 +66,7 @@ if __name__ == '__main__':
             logger.info("父进程进入睡眠状态"+str(pid))
             while True :   
                 finder.broadcast();
-                time.sleep(15)
+                time.sleep(60)
         else:
             pass
             # web.app.run(host="0.0.0.0", debug=True,threaded=True)
