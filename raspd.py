@@ -34,7 +34,13 @@ class raspd:
         self.client.subscribe(self.topic, qos=1)
 
     def on_message(self, client, userdata, msg):
-        logger.info("收到消息 %s", msg.payload.decode())
+        logger.info("message %s",msg.payload.decode())
+        cmd=json.loads(msg.payload.decode())
+        action = __import__('actions.config', fromlist=True)
+        action.action().run()
+        logger.info("action %s",cmd['action'])
+
+
 
     def initMqtt(self):
         address = hex(uuid.getnode())[2:];
@@ -68,8 +74,9 @@ if __name__ == '__main__':
                 finder.broadcast();
                 time.sleep(60)
         else:
-            # pass
-            web.app.run(host="0.0.0.0", port=10020, debug=True, threaded=True)
+            pass
+            # web.app.run(host="0.0.0.0", port=10020, debug=True, threaded=True)
     else:
+        logger.info("设备线程" + str(pid))
         device = raspd();
         device.run();
