@@ -68,8 +68,8 @@ if __name__ == '__main__':
                 finder.broadcast();
                 time.sleep(60)
         else:
-            pass
-            # web.app.run(host="0.0.0.0", debug=True,threaded=True)
+            #pass
+            web.app.run(host="0.0.0.0", debug=True,threaded=True)
     else:
         device = raspd();
         device.run();
