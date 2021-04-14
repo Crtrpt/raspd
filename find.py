@@ -20,9 +20,12 @@ class discovery:
     version = 0x01;
     client = socket(AF_INET, SOCK_DGRAM)
 
+    def __init__(self):
+        self.client.setsockopt(SOL_SOCKET, SO_BROADCAST, 1)
+
     def broadcast(self):
         if self.isOpen:
-            self.client.setsockopt(SOL_SOCKET, SO_BROADCAST, 1)
+
             self.id = (self.id + 1)
             if self.id > 255:
                 self.id = 0
