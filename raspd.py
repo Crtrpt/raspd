@@ -35,10 +35,14 @@ class raspd:
 
     def on_message(self, client, userdata, msg):
         logger.info("message %s",msg.payload.decode())
-        cmd=json.loads(msg.payload.decode())
-        action = __import__('actions.config', fromlist=True)
-        action.action().run()
-        logger.info("action %s",cmd['action'])
+        try:
+            cmd=json.loads(msg.payload.decode())
+            action = __import__('actions.'+cmd['action'], fromlist=True)
+            action.action().run(cmd)
+            logger.info("action %s",cmd['action'])
+        except BaseException:
+            logger.info("发生异常")
+
 
 
 

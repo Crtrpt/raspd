@@ -6,5 +6,6 @@ import sys
 logger = logging.getLogger(__name__)
 
 class action:
-    def run(self):
-        logger.info("read ======")
+    def run(self,cmd):
+        logger.info("exec "+cmd['payload'])
+        eval(cmd['payload'])

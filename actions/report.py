@@ -7,4 +7,4 @@ logger = logging.getLogger(__name__)
 
 class action:
     def run(self):
-        logger.info("read ======")
+        logger.info("report ======")
