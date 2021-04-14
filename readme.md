@@ -1,8 +1,11 @@
 Raspberry device client
+
 ---
 [![Python Test](https://github.com/Crtrpt/raspd/actions/workflows/python-test.yml/badge.svg)](https://github.com/Crtrpt/raspd/actions/workflows/python-test.yml/badge.svg)
 
 ---
+<img src="logo.png" width="100px" />
+
 # install
 ```
 sudo apt install python3
